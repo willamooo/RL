@@ -17,6 +17,7 @@ from player import Player
 
 import torch
 
+# 載入圖片
 BASE_PATH = os.path.dirname(__file__)
 background_img = pygame.image.load(os.path.join(BASE_PATH, "img", "background.png"))
 
@@ -170,8 +171,11 @@ class Game:
         # 更新 state
         self.state = pygame.surfarray.array3d(surface)
 
-        # 只有 render 模式才更新視窗
-        if screen is not None:
+        # # 只有 render 模式才更新視窗
+        # if screen is not None:
+        #     pygame.display.update()
+        # 只有真的有 display 視窗時才 update
+        if screen is not None and screen == pygame.display.get_surface():
             pygame.display.update()
 
 
